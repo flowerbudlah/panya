@@ -16,14 +16,16 @@
 			location.href = "${root}main";
 		})
 		
+		
 		$("#submit").on("click", function(){
+			
 			if($("#member_pw").val()==""){
 				alert("회원님의 비밀번호를 입력해주세요.");
 					$("member_pw").focus();
 					return false;
-				}	
-			});
-		})
+			} 
+		});
+	})
 </script>
 <body>
 <!-- 상단메뉴 -->

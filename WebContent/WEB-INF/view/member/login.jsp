@@ -12,6 +12,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
 </head>
 <body>
 <!-- 상단 메뉴 부분 -->
@@ -41,8 +49,7 @@
                             <form:errors path="member_pw" style="color: red;"/>
 						</div>
 						<div class="form-group text-right">
-							<a href="${root }member/find_id_form" style="">아이디</a>
-							또는 
+							<a href="${root }member/find_id_form" style="">아이디</a>또는 
 							<a href="${root }member/find_password_question" style="">비밀번호</a>를 잊으셨습니까? 
 							<br><br>
 							<form:button class="btn btn-danger">로그인</form:button>

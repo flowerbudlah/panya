@@ -13,52 +13,53 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	//아이디 중복체크 
+	//1. 아이디 중복체크 
 	public String checkID(String member_id) {
 		String ckecking_id = sqlSessionTemplate.selectOne("member.checkID", member_id);
 			return ckecking_id;
 	}
-	//이메일 중복체크
-	public int checkEmail(String member_email) {
-		int result = sqlSessionTemplate.selectOne("member.checkEmail", member_email);
-			return result;
+	
+	//2. 이메일 중복체크
+	public String checkEmail(String member_email) {
+		String checking_email = sqlSessionTemplate.selectOne("member.checkEmail", member_email);
+			return checking_email;
 	}
 	
-	public void addUserInfo(MemberDTO joinMemberDTO){//회원가입 
+	public void addUserInfo(MemberDTO joinMemberDTO){
 		sqlSessionTemplate.insert("member.addMemberInfo", joinMemberDTO);
 	}
 	
-	public MemberDTO getLoginMemberDTO(MemberDTO tmpLoginMemberDTO) {//로그인 
+	public MemberDTO getLoginMemberDTO(MemberDTO tmpLoginMemberDTO) {
 		MemberDTO fromDBMemberDTO = sqlSessionTemplate.selectOne("member.getLoginMember", tmpLoginMemberDTO);
 			return fromDBMemberDTO;
 	}
 	
 	
-	//회원정보를 수정하기 위해서 내 컴 db에 저장된 그 정보를 가져오는것 
+	//�쉶�썝�젙蹂대�� �닔�젙�븯湲� �쐞�빐�꽌 �궡 而� db�뿉 ���옣�맂 洹� �젙蹂대�� 媛��졇�삤�뒗寃� 
 	public MemberDTO getModifyMemberDTO(int member_idx) {                      
 		MemberDTO fromDBModifyMemberDTO = sqlSessionTemplate.selectOne("member.getModifyMemberDTO", member_idx);
 			return fromDBModifyMemberDTO;
   	} 
-	public void modifyMemberInfo(MemberDTO modifyMemberDTO){//회원정보수정 
+	public void modifyMemberInfo(MemberDTO modifyMemberDTO){//�쉶�썝�젙蹂댁닔�젙 
 		sqlSessionTemplate.update("member.modifyMemberInfo", modifyMemberDTO);
 	}
 	
-	//회원탈퇴 
+	//�쉶�썝�깉�눜 
 	public void delete(MemberDTO deleteMemberDTO) throws Exception {
 		sqlSessionTemplate.delete("member.delete", deleteMemberDTO);
 	}
 	
-	//아이디 찾기
+	//�븘�씠�뵒 李얘린
 	public String find_id(String member_email) throws Exception{
 		return sqlSessionTemplate.selectOne("member.find_id", member_email);
 	}
 	
 	
-	//비번찾기 1단계: 아이디를 넣어서 질문과 넣은아이디 가져오기  
+	//鍮꾨쾲李얘린 1�떒怨�: �븘�씠�뵒瑜� �꽔�뼱�꽌 吏덈Ц怨� �꽔���븘�씠�뵒 媛��졇�삤湲�  
 	public MemberDTO find_question(String member_id) throws Exception{
 		return sqlSessionTemplate.selectOne("member.find_question", member_id);
 	}
-	//비번찾기: 2단계: 답과 아이디(비공개)를 입력해서 비번찾기  
+	//鍮꾨쾲李얘린: 2�떒怨�: �떟怨� �븘�씠�뵒(鍮꾧났媛�)瑜� �엯�젰�빐�꽌 鍮꾨쾲李얘린  
 	public MemberDTO find_password(MemberDTO answerAndId){
 		return sqlSessionTemplate.selectOne("member.find_password", answerAndId);
 	}

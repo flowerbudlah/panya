@@ -34,12 +34,12 @@ public class MemberDTO {
 	
 	private String member_tel; 	
 	private String member_address; 	
-	private int postcode; //우편번호 
+	private int postcode; //�슦�렪踰덊샇 
 	
 	private String question; 
 	private String answer; 
 	
-	private String registerDate; //가입일
+	private String registerDate; //媛��엯�씪
 	
 	private boolean inputMemberID;
 	private boolean inputMemberEmail;
@@ -53,9 +53,9 @@ public class MemberDTO {
 	
 	
 	
-	//관리자페이지에서 검색
-	private String keyword;//키워드 
-	private String type; //검색종류
+	//愿�由ъ옄�럹�씠吏��뿉�꽌 寃��깋
+	private String keyword;//�궎�썙�뱶 
+	private String type; //寃��깋醫낅쪟
 	
 }
 

@@ -16,26 +16,35 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 //이메일 중복체크하는 제이쿼리와 아작스
+//Emaill 중복체크하는 제이쿼리와 Ajax
 function checkEmail(){
 	const member_email = $("#member_email").val()
-	if(member_email.length==0){ alert('이메일주소(e-mail)를 입력해 주세요. '); return; }
+	if(member_email.length == 0){
+		alert('가입하실 Email를 입력해주세요!');
+		return; 
+	}
     
     $.ajax({
       url: '${root}member/checkEmail/'+member_email, 
       type: 'get',
-
+      dataType: 'text',
       success: 
-    	  function(result){ // CallBack함수        
-    	  	if(result == 0){
-    	  		alert('사용할 수 있는 이메일입니다. ');
-    	  	}else if(result == 1){
-    		  alert('이미 존재하는 이메일입니다. 사용하실 수 없습니다.  ');  
-        }
-      }
+    	
+    	function(result){
+        	if(result.trim() == 'true'){
+        		alert(result); 
+          		alert('사용하실 수 있습니다. ');
+          		$('#inputMemberEmail').val('true');
+        	}else{
+        		alert(result); 
+          		alert('다른 Email을 이용해주세요.');  
+          		$('#inputMemberEmail').val('false');
+          }
+      	}
     })
   }
-function resetInputMemberEmail(){	
-	$("#inputMemberEmail").val(1); 
+function resetInputMemberEmail(){
+	$("#inputMemberEmail").val('false'); 
 }
 </script>
 </head>
@@ -79,7 +88,8 @@ function resetInputMemberEmail(){
 								<div class="input-group-append">
 									<button type="button" class="btn btn-warning" onClick="checkEmail();">이메일 중복확인</button>
 								</div>
-							</div><form:errors path="member_email" style="color:red;" />
+							</div>
+							<form:errors path="member_email" style="color:red;" />
 						</div>
 						<%--이메일 끝 --%>	
 						<div class="form-group">

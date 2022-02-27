@@ -12,7 +12,6 @@ public class MemberValidator implements Validator {
 		return MemberDTO.class.isAssignableFrom(clazz);
 	}
 
-	
 	@Override
 	public void validate(Object target, Errors errors) {
 		
@@ -24,21 +23,19 @@ public class MemberValidator implements Validator {
 		
 		if(dtoName.equals("joinMemberDTO") || dtoName.equals("modifyMemberDTO")) {
 			
-			if(loginMemberDTO.getMember_pw().equals( loginMemberDTO.getMember_pw2() ) == false) {//입력한 비번 두개가 다르다. 
+			if(loginMemberDTO.getMember_pw().equals( loginMemberDTO.getMember_pw2() ) == false) {//�엯�젰�븳 鍮꾨쾲 �몢媛쒓� �떎瑜대떎. 
 				errors.rejectValue("member_pw", "NotEquals");
 				errors.rejectValue("member_pw2", "NotEquals");
 			}
 		}
 		
-		//프로퍼티 그부분
+
 		if(dtoName.equals("joinMemberDTO")){
 			
-			//아이디 검증
 			if(loginMemberDTO.isInputMemberID() == false) {	
 				errors.rejectValue("member_id", "DontCheckMemberIdExist");
 			}
 		
-			//이메일 중복검사 하라고 요청하는 메시지
 			if(loginMemberDTO.isInputMemberEmail() == false) {	
 				errors.rejectValue("member_email", "CheckMemberEmailExist");
 			}

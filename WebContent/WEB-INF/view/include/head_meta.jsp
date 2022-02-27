@@ -22,14 +22,7 @@ a:visited{ color: black;  }
 <body>
 <nav class="bg-light navbar-dark fixed-top">
 
-
-<div class="logo">
-
-	<a href="${root }main"><img src="${root}image/banner.png" ></a>
-	
-	
-	
-</div>
+<div class="logo"><a href="${root }main"><img src="${root}image/banner.png" ></a></div>
 <div class="menu">
 	<ul class="test">
 		<c:choose>
@@ -47,8 +40,6 @@ a:visited{ color: black;  }
 	</ul>
 </div>
 
-
 </nav>
-
 </body>
 </html>

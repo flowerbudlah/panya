@@ -11,8 +11,8 @@
 	</select>
   	 
 	<!-- 이메일 중복 -->
-	<select id="checkEmail" resultType="java.lang.Integer" parameterType="java.lang.String">
-	<![CDATA[select count(*) from panya_member_table where member_email = #{member_email}]]>
+	<select id="checkEmail" resultType="java.lang.String" parameterType="java.lang.String">
+	<![CDATA[select member_id from panya_member_table where member_email = #{member_email}]]>
 	</select>
   	  
   	  

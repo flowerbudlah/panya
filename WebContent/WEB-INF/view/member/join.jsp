@@ -26,45 +26,52 @@ function checkID(){
       success: 
     	
     	function(result){
-    	  
         	if(result.trim() == 'true'){
-          		alert('You can use this ID..');
+          		alert('사용하실 수 있습니다. ');
           		$('#inputMemberID').val('true');
         	}else{
-          		alert('The ID is used by another user. You had better other ID..');  
+          		alert('다른 ID를 이용해주세요.');  
           		$('#inputMemberID').val('false');
           }
       	}
     })
   }
-function resetInputMemberID(){	$("#inputMemberID").val('false'); }
+function resetInputMemberID(){
+	$("#inputMemberID").val('false'); 
+}
 
-//이메일중복체크 
+
+//Emaill 중복체크하는 제이쿼리와 Ajax
 function checkEmail(){
 	const member_email = $("#member_email").val()
-	if(member_email.length == 0){ alert('이메일을 입력해주세요!'); return; }
+	if(member_email.length == 0){
+		alert('가입하실 Email를 입력해주세요!');
+		return; 
+	}
     
     $.ajax({
       url: '${root}member/checkEmail/'+member_email, 
       type: 'get',
-
+      dataType: 'text',
       success: 
+    	
     	function(result){
-    	  	if(result == 0){
-          		alert('You can use this Email Address');
-          		$('#inputMemberEmail').val(0);
-        	}else{ //이부분 구현안된다. 
-          		alert('The Email is used by another user. You had better other Email address.');  
-          		$('#inputMemberEmail').val(1);
+        	if(result.trim() == 'true'){
+        		alert(result); 
+          		alert('사용하실 수 있습니다. ');
+          		$('#inputMemberEmail').val('true');
+        	}else{
+        		alert(result); 
+          		alert('다른 Email을 이용해주세요.');  
+          		$('#inputMemberEmail').val('false');
           }
-      	}, 
-      	error:function(request,status,error){ // 실패 시 처리
-      		alert("다른 이메일을 이용해주세요!");
-			alert("code= "+ request.status + " message= " + request.responseText + " error= " + error);
-       }
-   	})
+      	}
+    })
   }
-function resetInputMemberEmail(){	$("#inputMemberEmail").val(1); }
+function resetInputMemberEmail(){
+	$("#inputMemberEmail").val('false'); 
+}
+
 </script>
 </head>
 <body>
@@ -74,10 +81,10 @@ function resetInputMemberEmail(){	$("#inputMemberEmail").val(1); }
 <div class="container" style="margin-top:50px">
 	<div class="row">
 		<div class="col-sm-3"></div>
-		<div class="col-sm-7"><h5>회원가입(Membership form)</h5>
+		<div class="col-sm-7"><h5>회원가입</h5>
 		<div class="card shadow-none">
 		<div class="card-body">
-			<form:form action="${root }member/join_proc" method="post" modelAttribute="joinMemberDTO">
+			<form:form action="${root }member/join_proc" method="post" modelAttribute="joinMemberDTO" id="joinMemberDTO">
 				<form:hidden path="inputMemberID" />
 				<form:hidden path="inputMemberEmail" />
 			
@@ -98,7 +105,8 @@ function resetInputMemberEmail(){	$("#inputMemberEmail").val(1); }
 					</div>
 					<form:errors path="member_id" style="color:red;" />
 				</div>
-				<%--아이디 입력 끝 --%>	               
+				<%--아이디 입력 끝 --%>	    
+				           
 				<div class="form-group">
 					<form:label path="member_pw">비밀번호</form:label>
 					<form:password path="member_pw" class="form-control" />
@@ -113,16 +121,19 @@ function resetInputMemberEmail(){	$("#inputMemberEmail").val(1); }
 					<form:label path="member_tel">연락처</form:label>
 					<form:input path="member_tel" class="form-control"/>
 				</div> 
+				
 				<%--이메일중복 --%>
 				<div class="form-group">
 				<form:label path="member_email">E-mail</form:label>
 				<div class="input-group">
-					<form:input path="member_email" class="form-control" onkeypress="resetInputMemberEmail()"/>
-						<div class="input-group-append">
-							<button type="button" class="btn btn-warning" onClick="checkEmail();">이메일 중복확인</button>
-						</div>
-				</div><form:errors path="member_email" style="color:blue;" />
+				<form:input path="member_email" class="form-control" onkeypress="resetInputMemberEmail()"/>
+					<div class="input-group-append">
+						<button type="button" class="btn btn-danger" onClick="checkEmail();">이메일 중복확인</button>
+					</div>
 				</div>
+				<form:errors path="member_email" style="color:red;"/>
+				</div>
+				
 				<%--주소입력 --%>
 				<div class="form-group">
 					<form:label path="member_address">주소</form:label>
@@ -141,7 +152,7 @@ function resetInputMemberEmail(){	$("#inputMemberEmail").val(1); }
 					<form:input path="answer" class="form-control"/>
 				</div>   
 				<div class="text-right" style="margin-top:100px">
-					<form:button class="btn btn-danger">회원가입 완료</form:button>
+					<form:button class="btn btn-danger" onclick="javascript:join_success();">회원가입 완료</form:button>
 				</div>
 			</form:form>
 		</div>

@@ -22,31 +22,35 @@ public class MemberService {
 	@Lazy
 	private MemberDTO loginMemberDTO;	
 	
-	//아이디 중복체크 
+	//1. 아이디 중복체크
 	public boolean checkID(String member_id) {
-		
 		String checking_id = memberDAO.checkID(member_id); 
 
 		if(checking_id == null) {	
-			return true; //입력한 아이디가 디비에 없으니 사용가능. 
-		}else {	
-			return false; //입력한 아이디 이미존재하니 사용불능. 
+			return true; //입력한 아이디가 존재하지 않기에 입력한 아이디 사용가능. 
+		} else {	
+			return false; //입력한 아이디 이미 존재하기에 사용불가
 		}
 	}
 	
-	//이메일 중복체크 
-	public int checkEmail(String member_email) {
-		int result = memberDAO.checkEmail(member_email);
-		return result;  //0, 1
+	
+	//2. 이메일 중복체크 
+	public boolean checkEmail(String member_email) {
+		String checking_email = memberDAO.checkEmail(member_email); 
+		if(checking_email == null) {	
+			return true; //입력한 아이디가 존재하지 않기에 입력한 아이디 사용가능. 
+		} else {	
+			return false; //입력한 아이디 이미 존재하기에 사용불가
+		}
 	}
 	
 	
-	//회원가입
+	//3. 회원가입
 	public void addMemberInfo(MemberDTO joinMemberDTO) {
 		memberDAO.addUserInfo(joinMemberDTO);
 	}
   
-	//로그인
+	//濡쒓렇�씤
 	public void getLoginMemberDTO(MemberDTO tmpLoginMemberDTO) {
 		MemberDTO fromDBMemberDTO = memberDAO.getLoginMemberDTO(tmpLoginMemberDTO);
 		
@@ -64,7 +68,7 @@ public class MemberService {
 	
 	
 	public void getModifyMemberDTO(MemberDTO modifyMemberDTO) {
-		//회원정보를 수정하기 위해서 정보수정 페이지를 눌렀을때 db에 있는 나의 정보 가져오는것 
+		//�쉶�썝�젙蹂대�� �닔�젙�븯湲� �쐞�빐�꽌 �젙蹂댁닔�젙 �럹�씠吏�瑜� �닃���쓣�븣 db�뿉 �엳�뒗 �굹�쓽 �젙蹂� 媛��졇�삤�뒗寃� 
 		MemberDTO fromDBModifyMemberDTO = memberDAO.getModifyMemberDTO(loginMemberDTO.getMember_idx());
   	
 		modifyMemberDTO.setMember_id(fromDBModifyMemberDTO.getMember_id());
@@ -81,18 +85,18 @@ public class MemberService {
 		modifyMemberDTO.setMember_idx(loginMemberDTO.getMember_idx());
 	} 
 
-	//회원정보수정 
+	//�쉶�썝�젙蹂댁닔�젙 
 	public void modifyMemberInfo(MemberDTO modifyMemberDTO){
 		modifyMemberDTO.setMember_idx(loginMemberDTO.getMember_idx());
 		memberDAO.modifyMemberInfo(modifyMemberDTO);
 	}
 	
-	//회원탈퇴 
+	//�쉶�썝�깉�눜 
 	public void delete(MemberDTO deleteMemberDTO) throws Exception{
 		memberDAO.delete(deleteMemberDTO);
 	}
 	
-	// 아이디 찾기
+	// �븘�씠�뵒 李얘린
 	public String find_id(HttpServletResponse response, String member_email) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -101,7 +105,7 @@ public class MemberService {
 		
 		if (id == null) {
 			out.println("<script>");
-			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("alert('媛��엯�맂 �븘�씠�뵒媛� �뾾�뒿�땲�떎.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -112,7 +116,7 @@ public class MemberService {
 	}
 	
 	
-	//비밀번호를 찾기위한 첫단계로 회원가입시 입력한 비번 분실시 질문받기 
+	//鍮꾨�踰덊샇瑜� 李얘린�쐞�븳 泥ル떒怨꾨줈 �쉶�썝媛��엯�떆 �엯�젰�븳 鍮꾨쾲 遺꾩떎�떆 吏덈Ц諛쏄린 
 	public MemberDTO find_question(HttpServletResponse response, String member_id) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -121,7 +125,7 @@ public class MemberService {
 		
 		if (memberDTO == null) {
 			out.println("<script>");
-			out.println("alert('회원가입시 비번분실시 질문을 입력하지 않으셨거나 혹은 가입된 정보가 없습니다.');");
+			out.println("alert('�쉶�썝媛��엯�떆 鍮꾨쾲遺꾩떎�떆 吏덈Ц�쓣 �엯�젰�븯吏� �븡�쑝�뀲嫄곕굹 �샊�� 媛��엯�맂 �젙蹂닿� �뾾�뒿�땲�떎.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -132,7 +136,7 @@ public class MemberService {
 	}
 	
 	
-	// 비밀번호 찾기(질문에 대한 답과 아이디를 입력한 뒤에-로그인방식과 유사 )
+	// 鍮꾨�踰덊샇 李얘린(吏덈Ц�뿉 ���븳 �떟怨� �븘�씠�뵒瑜� �엯�젰�븳 �뮘�뿉-濡쒓렇�씤諛⑹떇怨� �쑀�궗 )
 	public MemberDTO find_password(MemberDTO answerAndId) {
 		return memberDAO.find_password(answerAndId);
 		

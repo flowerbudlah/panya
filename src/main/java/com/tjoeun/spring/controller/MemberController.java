@@ -45,6 +45,7 @@ public class MemberController {
 		model.addAttribute("failure", failure);
 			return "member/login";
 	}
+	
 	//로그인 버튼 누르기
 	@PostMapping("/login_proc")
 	public String login_pro
@@ -61,6 +62,7 @@ public class MemberController {
 			return "member/login_failure"; //로그인 실패시 
 		}
 	}
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		loginMemberDTO.setMemberLogin(false);

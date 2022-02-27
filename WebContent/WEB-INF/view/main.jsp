@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 <style>
-thead{ background-color: salmon;  }
+thead{ background-color: #df4759 }
 .carousel-caption{ font-family: 'Single Day', cursive;  }
 .card-title{font-family: 'Single Day', cursive; }
 </style>
@@ -25,10 +25,9 @@ thead{ background-color: salmon;  }
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
 
-<div class="container" style="margin-top: 30px; margin-bottom:100px;">
-
-    <div id="landscape" class="carousel slide" data-ride="carousel" data-interval="4200">
-      <!-- indicator -->
+<div class="container" style="margin-top: 30px; margin-bottom:30px;">
+<div id="landscape" class="carousel slide" data-ride="carousel" data-interval="4200">
+	<!-- indicator -->
 	<ul class="carousel-indicators">
         <li data-target="#landscape" data-slide-to="0" class="active"></li>
         <li data-target="#landscape" data-slide-to="1" ></li>
@@ -47,7 +46,7 @@ thead{ background-color: salmon;  }
       	<div class="carousel-caption">
             <h1>ようこそ。 </h1>
             <h2>ありがとうございます。 </h2>
-            <h3>팡야(パン屋)는 매일매일 신선하고 다양한 빵을 만들고 있습니다.</h3>
+            <h3>おいしいものを作っています。</h3>
 		</div>
 		</div>
         
@@ -65,13 +64,13 @@ thead{ background-color: salmon;  }
       <a class="carousel-control-prev" href="#landscape" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
       <a class="carousel-control-next" href="#landscape" data-slide="next"><span class="carousel-control-next-icon"></span></a>
     </div>
-   
 </div> 
+
 <!-- 공지사항 미리보기 부분 -->
 <c:forEach var="sub_list" items="${listAll}" varStatus="status">
-<div class="container" style="margin-top:70px">
+<div class="container" style="margin-top:0px; margin-bottom:50px">
 	<div class="row">
-		<div class="col-lg-12" style="margin-top:20px">
+		<div class="col-lg-12" style="margin-top:20px; ">
 			<div class="card shadow-none">
 				<div class="card-body">
 				<h2 class="card-title">${boardNameList[status.index].board_name }</h2>
@@ -109,11 +108,13 @@ thead{ background-color: salmon;  }
 					<a href="${root }board/main?board_idx=${boardNameList[status.index].board_idx }" class="btn btn-danger" style="color:white">더보기</a></div>
 				</div>
 			</div>
-			   
 		</div>
 	</div>
 </div> 
 </c:forEach>
+<!-- 게시판 미리보기 부분 끝-->
+
+
 <!-- 하단 정보 -->  
 <c:import url="/WEB-INF/view/include/bottom_info.jsp" />
 </body>
