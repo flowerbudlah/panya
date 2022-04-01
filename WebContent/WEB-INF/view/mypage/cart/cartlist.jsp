@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>パン屋 パン屋 ♥</title>
+<title>팡야팡야</title>
+<link rel="icon" type="image/x-icon" href="${root}image/favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -15,11 +16,11 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 table{border: 1px solid lightgray; }
-th{color: white; background-color: salmon; text-align:center; }
+th{color: white; background-color: #df4759; text-align:center; }
 .sender{  }
 .recipient{ background-color: whitesmoke; }
 .title{ }
-h5:hover{color: salmon;}
+h5:hover{color: #df4759;}
 h5:active{color: gray;}
 </style>
 </head>
@@ -30,10 +31,7 @@ h5:active{color: gray;}
 <div class="container" style="margin-top: 50px; margin-bottom:50px;" align="center">
 <!--본문내용-->
 <c:set value="${cartMap.cartList}" var="cartList"/>
-	<h5><strong>
-	${loginMemberDTO.member_name }님의 장바구니 
-	<img src="${root }image/cart.png" alt="장바구니" width="50px;"></strong>
-	</h5> 
+	<h5><strong>${loginMemberDTO.member_name }님의 장바구니 </strong></h5> 
 	<table class="table table-hover" style="width: 100%; margin: auto; border-bottom: 1px solid #D5D5D5;">
 		<thead>
 			<tr>

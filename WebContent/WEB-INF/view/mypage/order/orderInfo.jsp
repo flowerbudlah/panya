@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>パン屋 パン屋 ♥</title>
+<title>팡야팡야</title>
+<link rel="icon" type="image/x-icon" href="${root}image/favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <style>
 th{color: white; background-color: salmon; text-align: center; width: 250px;  }
@@ -23,7 +24,7 @@ h4:active{color: gray;}
 <!--상단메뉴 -->
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
-<div class="container text-center" style="margin-top:50px">
+<div class="container text-center" style="margin-top:100px; margin-bottom:100px">
 <!-- 내용 -->
 <h4>${loginMemberDTO.member_name } 고객님의 <strong>주문·결제·배송 정보</strong>입니다. </h4>
 <c:choose>
@@ -81,8 +82,6 @@ h4:active{color: gray;}
 	</c:when>
 	<c:otherwise>
 		<p>${loginMemberDTO.member_name } 고객님께서는 아직 주문·결제를 완료하신 상품내역이 없습니다.</p>
-		<p>お客様はまだ 注文·決済を 完了した内訳が ありません。<br>
-		You haven't placed an order yet.</p>
 	</c:otherwise>
 </c:choose>
 <!-- 하단정보 -->

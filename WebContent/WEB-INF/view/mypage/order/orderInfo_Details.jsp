@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>パン屋 パン屋 ♥</title>
+<title>팡야팡야</title>
+<link rel="icon" type="image/x-icon" href="${root}image/favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <style>
 .orderInfo { border:5px dotted lightgray; padding:10px 20px; margin:20px 0;}
@@ -27,14 +28,14 @@ td{width:700px; text-align: left; }
 <!--상단메뉴 -->
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
-<div class="container text-center" style="margin-top:50px">
+<div class="container text-center" style="margin-top:100px; margin-bottom:100px">
 <!-- 내용 -->
 <div class="orderInfo">
 	<c:forEach items="${allInformationAboutOrder}" var="allInformationAboutOrder" varStatus="status">
 	<c:if test="${status.first}">
 	<table>
 		<tr>
-			<th><span>주문번호:</span> </th>
+			<th><span>주문번호:</span></th>
 			<td>${allInformationAboutOrder.order_idx}</td>
 		</tr>
 		<tr>

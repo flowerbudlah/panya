@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <style>
 table{border: 1px solid gray; }
-th{color: white; background-color: salmon; text-align:center; border: 1px solid gray;}
+th{color: white; background-color: #df4759; text-align:center; border: 1px solid gray;}
 td{text-align:center; border: 1px solid gray;}
 </style>
 </head>
@@ -19,8 +19,6 @@ td{text-align:center; border: 1px solid gray;}
 <div class="container" style="margin:50px;">
 <h5>${loginMemberDTO.member_name } 전용 페이지 (The Page for the Administrator only)</h5>
 <p>회원목록</p>
-
-
 <%--회원검색 --%>
 <form action="${root }admin/search_result" method="get" class="text-left">
 	<select name="type">

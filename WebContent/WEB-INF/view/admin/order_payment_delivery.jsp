@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <style>
 table{border: 1px solid gray; }
-th{color: white; background-color: salmon; text-align:center; border: 1px solid gray;}
+th{color: white; background-color: #df4759; text-align:center; border: 1px solid gray;}
 td{text-align:center; border: 1px solid gray;}
 </style>
 </head>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>팡야팡야</title>
-<link rel="icon" type="image/x-icon" href="image/favicon.png">
+<link rel="icon" type="image/x-icon" href="${root }image/favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -28,7 +28,7 @@ ul{list-style:none;}
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
 <!-- 본문내용 -->
-<div class="container" style="margin-top:50px">
+<div class="container" style="margin-top:50px; margin-bottom:50px">
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-7">
@@ -49,11 +49,23 @@ ul{list-style:none;}
           <div class="form-group">
             <label for="post_subject">제목</label>
             <input type="text" id="post_subject" name="post_subject" class="form-control" value="${readPostDTO.post_subject }" disabled="disabled"/>
-          </div>
+          </div>      
           <div class="form-group">
             <label for="post_content">내용</label>
-            <textarea id="post_content" name="post_content" class="form-control" rows="15" style="resize:none" disabled="disabled">${readPostDTO.post_text }</textarea>
+            <textarea id="post_content" name="post_content" class="form-control" rows="20" style="resize:none" disabled="disabled">
+            	${readPostDTO.post_text }
+            </textarea>
           </div>
+          
+         <!-- 업로드한 파일이 있는 경우에만 실행하도록 함 -->
+		<c:if test="${readPostDTO.post_file != null }">
+          	<div class="form-group">
+          		<label for="board_file" style="font-size:13px;">첨부 이미지</label>
+          		<img src="${root }upload/${readPostDTO.post_file}" width=100%; height=350px;/>            
+          	</div>
+		</c:if>
+          
+          
                
 <hr/>
 <!-- 댓글시작 -->
@@ -91,26 +103,19 @@ ul{list-style:none;}
 </div>
 </c:if><br>
 <!-- 댓글 끝 -->
-
-<!-- 업로드한 파일이 있는 경우에만 실행하도록 함 -->
-<c:if test="${readPostDTO.post_file != null }">
-	<div class="form-group">
-		<label for="board_file">첨부 이미지</label><img src="${root }upload/${readPostDTO.post_file}" width="100%"/>            
-	</div>
-</c:if>
-	<div class="form-group">
+<div class="form-group">
 	<div class="text-right">
-	<a href="${root }board/main?board_idx=${board_idx}&page=${page}" class="btn btn-primary">목록보기</a>
-              
-              
-<!--글쓴이와 관리자만 이버튼 쓸수있게 한다.-->
-<c:if test="${(loginMemberDTO.member_idx == readPostDTO.post_writer_idx) || (loginMemberDTO.member_id eq 'admin')}">
-	<a href="${root }board/modify?board_idx=${board_idx}&post_idx=${post_idx}&page=${page}" class="btn btn-info">수정하기</a>
-	<a href="${root }board/delete?board_idx=${board_idx}&post_idx=${post_idx}" class="btn btn-danger">삭제</a>
-</c:if>
-           	    	
-            </div>
-          </div>
+		<a href="${root }board/main?board_idx=${board_idx}&page=${page}" class="btn btn-primary">목록보기</a>      
+		<!--글쓴이와 관리자만 이버튼 쓸수있게 한다.-->
+			<c:if test="${(loginMemberDTO.member_idx == readPostDTO.post_writer_idx) || (loginMemberDTO.member_id eq 'admin')}">
+				<a href="${root }board/modify?board_idx=${board_idx}&post_idx=${post_idx}&page=${page}" class="btn btn-info">수정하기</a>
+				<a href="${root }board/delete?board_idx=${board_idx}&post_idx=${post_idx}" class="btn btn-danger">삭제</a>
+			</c:if>    	
+	</div>
+</div>
+
+
+
         </div>
       </div>
     </div>

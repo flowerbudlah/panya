@@ -17,7 +17,7 @@
 <body>
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:50px; margin-bottom:50px;">
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-7">

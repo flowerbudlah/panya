@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <style>
-thead{ background-color: salmon;  }
+thead{ background-color: #df4759;  }
 h5{font-family: 'Single Day', cursive; }
 </style>
 </head>
@@ -54,8 +54,6 @@ h5{font-family: 'Single Day', cursive; }
         		</c:forEach>
 				</tbody>
 			</table>
-			
-
 <!-- 페이징 -->			
 <div class="d-none d-md-block">
 	<ul class="pagination justify-content-center">

@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>パン屋 パン屋 ♥</title>
+<title>팡야팡야</title>
+<link rel="icon" type="image/x-icon" href="${root}image/favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -41,14 +42,20 @@ h2{font-family: 'Single Day', cursive; }
 					<tr>
 						<td class="text-center d-none d-md-table-cell">${postDTO.post_idx } </td>
 						<td><a href='${root }board/read?board_idx=${board_idx }&post_idx=${postDTO.post_idx}&page=${page}'> ${postDTO.post_subject}
-								<c:if test="${postDTO.reply_cnt > 0}"><span style="color: red;">[${postDTO.reply_cnt}]</span></c:if>
+								<!-- 그림 첨부파일 업로드 한 경우 -->
+								<c:if test="${postDTO.post_file != null }">
+									<img src="${root }image/uploadingPhoto.png" width=20px;>
+								</c:if>
+								<!-- 댓글존재할 경우 -->
+								<c:if test="${postDTO.reply_cnt > 0}">
+									<span style="color: red;">[${postDTO.reply_cnt}]</span>
+								</c:if>
 							</a>
 						</td>
 						<td class="text-center d-none d-md-table-cell">${postDTO.post_writer_name }</td>
 						<td class="text-center d-none d-md-table-cell">${postDTO.post_date}</td>
 						<td class="text-center d-none d-md-table-cell">${postDTO.post_read_count}</td>
 					</tr>
-        
                   </c:forEach>
 				</tbody>
 			</table>

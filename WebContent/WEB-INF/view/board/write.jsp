@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>パン屋 パン屋 ♥</title>
+<title>팡야팡야</title>
+<link rel="icon" type="image/x-icon" href="image/favicon.png">
 <!-- Bootstrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,7 +21,7 @@
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
 <!-- 입력내용 -->
-<div class="container" style="margin-top:50px">
+<div class="container" style="margin-top:100px; margin-bottom:100px;">
 	<div class="row">
 		<div class="col-sm-3"></div>
 			<div class="col-sm-7">
