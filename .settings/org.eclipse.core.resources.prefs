@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/tjoeun/spring/controller/RestAPIController.java=UTF-8
+encoding//src/main/java/com/tjoeun/spring/dao/MemberDAO.java=UTF-8
+encoding//src/main/java/com/tjoeun/spring/dto/MemberDTO.java=UTF-8
+encoding//src/main/java/com/tjoeun/spring/service/MemberService.java=UTF-8
+encoding//src/main/java/com/tjoeun/spring/validator/MemberValidator.java=UTF-8
