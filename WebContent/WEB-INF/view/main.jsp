@@ -47,7 +47,6 @@ thead{ background-color: #df4759 }
       	<div class="carousel-caption">
             <h1>ようこそ。 </h1>
             <h2>ありがとうございます。 </h2>
-            <h3>おいしいものを作っています。</h3>
 		</div>
 		</div>
         
@@ -92,8 +91,12 @@ thead{ background-color: #df4759 }
 						<td class="text-center">${postDTO.post_idx }</td>
 						<td>
 						<a href='${root }board/read?board_idx=${boardNameList[0].board_idx }&post_idx=${postDTO.post_idx}&page=1'>${postDTO.post_subject }
+						<!-- 그림 첨부파일 업로드 한 경우 -->
+						<c:if test="${postDTO.post_file != null }">
+							<img src="${root }image/uploadingPhoto.png" width=20px;>
+						</c:if>
 						<c:if test="${postDTO.reply_cnt > 0}">
-						<span style="color: red;">[${postDTO.reply_cnt}]</span>
+							<span style="color: red;">[${postDTO.reply_cnt}]</span>
 						</c:if>
 						</a>
 						</td>
