@@ -13,7 +13,7 @@
 <c:import url="/WEB-INF/view/include/head_meta.jsp" />
 <c:import url="/WEB-INF/view/include/top_menu.jsp" />
 <!-- 본문내용 -->
-<div class="container text-center" style="margin-top:30px; margin-bottom:100px" >
+<div class="container text-center" style="margin-top:30px; margin-bottom:50px" >
 
 <!-- 내용 -->
 <div id="map" style="width:950px;height:400px;" class="container"></div>

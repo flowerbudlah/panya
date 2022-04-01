@@ -42,7 +42,6 @@ public class BoardService {
 	private MemberDTO loginMemberDTO;
 	
 	
-	
 	//게시판 이미지 파일 업로드 관련 
 	private String saveUploadFile(MultipartFile upload_file) {
 		
@@ -57,6 +56,7 @@ public class BoardService {
 		}
 		return file_name;
 	}
+	
 	//글쓰기 
 	public void addPostInfo(PostDTO writePostDTO) {   // parameter로 전달되어오는 data 확인하기
 		
@@ -68,8 +68,8 @@ public class BoardService {
 		}
 		
 		writePostDTO.setPost_writer_idx(loginMemberDTO.getMember_idx());
-			
-			boardDAO.addPostInfo(writePostDTO);
+		boardDAO.addPostInfo(writePostDTO);
+		
 	}
 	
 	
@@ -80,6 +80,8 @@ public class BoardService {
 		String board_name = boardDAO.getBoardName(board_idx);
 			return board_name;
 	}
+	
+	
 	// 페이징 작업을 거친 게시판 메인화면 그 리스트! 
 	public List<PostDTO> getPostList(int board_idx, int page){
 		                             // 10  
@@ -89,6 +91,7 @@ public class BoardService {
 		List<PostDTO> postList = boardDAO.getPostList(board_idx, rowBounds);
 			return postList;
 	}
+	
 	//게시판 메인 페이지
 	public PageDTO getPostCnt(int post_board_idx, int currentPage) {
 		
@@ -104,6 +107,8 @@ public class BoardService {
 		int search_result_count = boardDAO.searchResultCount(searchPostDTO);
 			return search_result_count; 
 	}
+	
+	
 	//페이징 작업도 추가한 게시판 검색관련 
 	public List<PostDTO> selectSearchList(PostDTO searchPostDTO, int page){
 		
@@ -114,6 +119,8 @@ public class BoardService {
 		 
 		return searchList; 
 	}
+	
+	
 	//검색결과관련 페이징
 	public PageDTO searchListCount(PostDTO searchPostDTO, int currentPage) {
 		
@@ -157,12 +164,3 @@ public class BoardService {
 	}
 	
 }
-
-
-
-
-
-
-
-
-

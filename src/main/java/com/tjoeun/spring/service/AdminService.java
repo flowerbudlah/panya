@@ -36,19 +36,13 @@ public class AdminService {
 		int search_result_count = adminDAO.numberOfResultSearchingMember(searchResultMemberDTO); 
 		return search_result_count; 
 	}
+	
+	
 	//검색 결과 회원
 	public List<MemberDTO> resultSearchingMember(MemberDTO searchResultMemberDTO){
 		List<MemberDTO> memberList = adminDAO.resultSearchingMember(searchResultMemberDTO); 
 		return memberList; 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

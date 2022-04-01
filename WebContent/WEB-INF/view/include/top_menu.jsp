@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=], initial-scale=1.0">
-<title>Document</title>
+<title>팡야팡야</title>
+<link rel="shortcut icon" href="images/favicon/favicon.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 <style>
@@ -15,7 +16,7 @@
 .main li {display: inline-block; font-weight: bolder; list-style: none;  color: white; }
 .main ul{opacity: 0; transition: opacity 0.4s; pointer-events: none; position: absolute; padding-left: 0px; }
 .main:after{ content: ''; display: block; clear: both; }
-.main > li { margin-right: 50px;  margin-left: 50px;  margin-top: 145px; margin-bottom: 70px; line-height: 23px; padding-bottom: 5px; }
+.main > li { margin-right: 50px;  margin-left: 50px;  margin-top: 145px; margin-bottom: 70px; line-height: 25px; padding-bottom: 5px; }
 .main > li ul li{ float: left; list-style: none; font-weight: bolder; font-size: 15px;  position: relative; margin:0 auto; }
 .main > li:hover ul{ opacity: 1; pointer-events: auto; }
 </style>

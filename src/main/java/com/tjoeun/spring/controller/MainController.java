@@ -18,11 +18,14 @@ import com.tjoeun.spring.service.MainService;
 @Controller
 public class MainController {
 	
+	
 	@Autowired
 	private MainService mainService;
 	
+	
 	@Autowired
 	private TopMenuDAO topMenuDAO;
+	
 	
 	@GetMapping("/main")
 	public String main(HttpServletRequest request, Model model) {
@@ -31,16 +34,24 @@ public class MainController {
 		//게시판 메인화면에 미리나오는 그부분
 		List<List<PostDTO>> listAll = new ArrayList<List<PostDTO>>();
 		
+		
 		for(int i = 1 ; i <= 2; i++ ) {
-  		List<PostDTO> mainList = mainService.getMainList(i);
-  			listAll.add(mainList);
+			
+			List<PostDTO> mainList = mainService.getMainList(i);
+  			
+			listAll.add(mainList);
+		
 		}
+		
+		
 		model.addAttribute("listAll", listAll);
 		
 		List<BoardDTO> boardNameList = topMenuDAO.getTopMenuList();
+		
 		model.addAttribute("boardNameList", boardNameList);
 		
 		return "main";
+		
 	}
 	
 	

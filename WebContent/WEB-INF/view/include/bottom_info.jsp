@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 </style>
-<div class="container-fluid bg-danger text-white" style="margin-top:10px; padding-top:10px; padding-bottom:5px">
-  <div class="container">
+<div class="container-fluid bg-danger text-white" style="margin-top:10px; padding-top:15px; padding-bottom:5px">
+  <div class="container text-center">
 
     <p style="font-size:12px;">http://panyapanay.co.jp/</p>
     <p style="font-size:12px;">대표자 : 이아현 | 주소 : 서울특별시 서대문구 신촌로 119, 2,3층(창천동) 02.313.1132</p>

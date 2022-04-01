@@ -30,6 +30,7 @@ import com.tjoeun.spring.service.CartService;
 @Controller
 @RequestMapping("/mypage")
 public class CartController {
+	
 	@Autowired
 	private CartService cartService;
 
@@ -51,6 +52,8 @@ public class CartController {
 			return "add_success";
 		}
 	}
+	
+	
 	//장바구니 목록
 	@RequestMapping(value = "/cart/cartlist/{member_id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public String myCart(@PathVariable("member_id") String member_id, Model model) {
@@ -64,6 +67,8 @@ public class CartController {
 		
 		return "mypage/cart/cartlist";
 	}
+	
+	
 	//장바구니 안에있는 그 물건 지우기
 	@GetMapping("/cart/cartlist/delete")
 	public String delete(@RequestParam("cart_idx") int cart_idx, HttpSession session) {
@@ -73,6 +78,8 @@ public class CartController {
 		
 		return "redirect:/mypage/cart/cartlist/"+loginMemberDTO.getMember_id();
 	}
+	
+	
 	//장바구니 안에있는 그 물건의 수량을 변경한다. 
 	@PostMapping("/cart/cartlist/updateAmount")
 	public String updateAmount(@ModelAttribute("updateAmountCartDTO") CartDTO updateAmountCartDTO, HttpSession session) {
@@ -112,6 +119,7 @@ public class CartController {
 		return "redirect:/mypage/order/orderInfo"; 
 	}
 	
+	
 	//특정인의 결제완료된 주문목록 
 	@GetMapping("/order/orderInfo")
 	public String orderPaymentList(HttpSession session, Model model){
@@ -124,6 +132,7 @@ public class CartController {
 		
 		return "mypage/order/orderInfo";
 	}
+	
 	
 
 	//결제가 완료가 된경우, 상품에 관한 상세정보도 알수있는 

@@ -26,27 +26,30 @@ public class CartService {
 		return cartDAO.findCartGoods(cartDTO);
 	}
 	
-	//장바구니에 넣기 
+	
+	// 장바구니에 넣기 
 	public void addGoodsInCart(CartDTO cartDTO) {
 		cartDAO.addGoodsInCart(cartDTO);
 	}
 	
 	
-	//장바구니 목록
+	// 장바구니 목록
 	public Map<String, List> getMyCart(String member_id) {
 		
 		Map<String, List> cartMap = new HashMap<String, List>();
+		
 		List<CartDTO> cartList = cartDAO.getMyCart(member_id);
 		
 		if (cartList.size() == 0) {
 			return null;
 		}
+		
 		cartMap.put("cartList", cartList);
 			return cartMap;
+				
 	}
 	
-	
-	
+
 	//장바구니안에있는 그 물건 하나 지우기
 	public void delete(int cart_idx) {
 		cartDAO.delete(cart_idx);
@@ -67,14 +70,18 @@ public class CartService {
 	public void orderInfo(OrderDTO newOrderDTO) {
 		cartDAO.orderInfo(newOrderDTO);
 	}
-	//2 )주문 상세정보(주문번호, 해당물품, 수량, )
+	
+	
+	//2) 주문 상세정보(주문번호, 해당물품, 수량, )
 	public void orderInfoDetail(OrderDetailDTO newOrderDetailDTO) {
 		cartDAO.orderInfoDetail(newOrderDetailDTO); 
 	}
+	
 	//3) 카트비우기
 	public void emptyMyCart(String member_id) {
 		cartDAO.emptyMyCart(member_id); 
 	}
+	
 	//4) 특정회원의 결제완료 리스트
 	public List<OrderDTO> orderPaymentList(String member_id) {
 		
@@ -95,18 +102,4 @@ public class CartService {
 	
 	
 	
-	
-	
 }
-
-
-
-	
-	
-
-	
-	
-	
-	
-
-
